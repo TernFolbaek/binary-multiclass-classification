@@ -62,3 +62,19 @@ This sequential flow mimics how information is processed in a Keras model but al
 
 ### Make Predictions
 After building the model, we use it to **make predictions** by feeding it new data. By manually implementing this process, we gain a deeper understanding of how neural networks work, from the calculation of weighted sums to the role of activation functions in transforming those sums into meaningful predictions.
+
+## `nn-multiclass-classification.ipynb`
+
+### Define softmax function
+We begin by defining our softmax function which looks as follows:
+
+$$\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{n} e^{z_j}}$$
+
+Our softmax function takes all the logits (the logit is the ouput of a neuron before being sent into an activation function) from a layer, where the numerator is $z_i$ which is the logit of a single neuron and is the output of the following format $\vec{w} \cdot \vec{x} + b$. Whilst the denominator is the accumulated exponentiated output of all other neurons from that layer.
+### Reshape Data
+
+### Define our network
+We define our network which is of 3 layers, first layer containing 25 neurons then 15 neurons then 10. The activation function for the first two layers is relu, allowing the ouput of all positive values, but no values under 0, and at last a linear activation which allows us to compile with ``SparseCategoricalCrossentropy`` with with_logits=true allowing for more accurate outputs.
+
+### Visualize predictions
+We at last visualize our predictions for each handwritten digit, with the true label target y and our prediction.
